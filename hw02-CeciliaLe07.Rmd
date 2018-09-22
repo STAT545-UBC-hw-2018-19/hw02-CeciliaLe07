@@ -10,7 +10,7 @@ library(tidyverse)
 library(ggplot2)
 ```
 
-# 1. Smell test the data
+#1. Smell test the data
 
 We can use the command `str()` to answer the following questions:
 
@@ -65,7 +65,7 @@ ncol(gapminder)
 |dgpPercap   |Numeric     |
 
 
-# 2. Explore individual variables
+#2. Explore individual variables
 
 Pick at least one categorical variable and at least one quantitative variable to explore.
 

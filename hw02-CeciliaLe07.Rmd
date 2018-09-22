@@ -89,17 +89,17 @@ The barplot allow us to know this variable has 5 leves: Africa, Americas, Asia, 
 Regarding the *country* variable, we can visualize the number of observations of each country by the following table:
 
 ```{r,echo=FALSE,include=FALSE}
-library(knitr)
-library(kableExtra)
-knitr::opts_chunk$set(echo = TRUE)
+#library(knitr)
+#library(kableExtra)
+#knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r,echo=FALSE}
 
-dt <- table(gapminder$country)
+#dt <- table(gapminder$country)
             
-kable(dt) %>%
-  kable_styling(bootstrap_options = "striped", full_width = TRUE, position = "left")
+#kable(dt) %>%
+#  kable_styling(bootstrap_options = "striped", full_width = TRUE, position = "left")
 ```
 
 The data set contains data of **142** different countries from **year 1952 to 2007**, with data of every 5 years.

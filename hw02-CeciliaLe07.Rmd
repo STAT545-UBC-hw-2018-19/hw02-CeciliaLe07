@@ -1,7 +1,6 @@
 ---
 title: "Explore Gapminder and use dplyr"
-author: "Ana Cecilia Leon Morales"
-output: html_document
+output: github_document
 ---
 
 ```{r,echo=FALSE,include=FALSE}

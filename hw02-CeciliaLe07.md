@@ -30,36 +30,41 @@ str(gapminder)
     -   **yes**, there are different commands like `class`, `atributtes`, `nrow` and `ncol`. For example:
 
 ``` r
+#This command returns the classes of object gapminder
 class(gapminder)
 ```
 
     ## [1] "tbl_df"     "tbl"        "data.frame"
 
 ``` r
+#This command returns the column's names, classes and row names of gapminder
+
+#These are the name of columns
 attributes(gapminder)$names
 ```
 
     ## [1] "country"   "continent" "year"      "lifeExp"   "pop"       "gdpPercap"
 
 ``` r
+#These are the classes
 attributes(gapminder)$class
 ```
 
     ## [1] "tbl_df"     "tbl"        "data.frame"
 
 ``` r
+#This command returns the number of rows of the data frame
 nrow(gapminder)
 ```
 
     ## [1] 1704
 
 ``` r
+#This command returns the number of columns of the data frame
 ncol(gapminder)    
 ```
 
     ## [1] 6
-
--   Can you imagine different functions being useful in different contexts?
 
 -   What data type is each variable?
     -   Type of each variable is expresed on the following table:
@@ -84,24 +89,24 @@ Pick at least one categorical variable and at least one quantitative variable to
 
 ### Continent
 
-Let's explore the variable *continent* which is a categorical variable:
+Let's explore the variable *continent* which is a categorical variable, so in order to know its levels and corresponding couts we can produce a barplot:
 
 ![](hw02-CeciliaLe07_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
-The barplot allow us to know this variable has 5 leves: Africa, Americas, Asia, Europe and Oceania. Africa is the category with the maximum number of observations, which is equal to 624; Oceania is the continent with the minimum number of observations, which is equal to 24.
+This graph allows us to know this variable has 5 leves: Africa, Americas, Asia, Europe and Oceania. Africa is the category with the maximum number of observations, which is equal to 624; Oceania is the continent with the minimum number of observations, which is equal to 24.
 
 ### Country
 
 Regarding the *country* variable, we can visualize the number of observations of each country by the following table:
 
-<table class="table table-striped" style>
+<table class="table table-striped table-hover" style="font-size: 9px; width: auto !important; ">
 <thead>
 <tr>
 <th style="text-align:left;">
-Var1
+Country
 </th>
 <th style="text-align:right;">
-Freq
+Observations
 </th>
 </tr>
 </thead>
@@ -1259,7 +1264,8 @@ During period from 1952 to 2007 the population's range for these countries was \
 
 ``` r
 ggplot(gapminder,aes(x=as.factor(year),y=pop)) +
-       geom_boxplot()
+       geom_boxplot(outlier.colour="purple",outlier.shape=1,outlier.size=1) + 
+       ggtitle("Population's distribution by year")
 ```
 
 ![](hw02-CeciliaLe07_files/figure-markdown_github/unnamed-chunk-11-1.png)
@@ -1281,7 +1287,7 @@ The side-by-side plot of population by year shows that population tends to incre
 | 2002 | 41457589          | 140848283                      |
 | 2007 | 44021220          | 147621398                      |
 
-Furthermore,during 2007 the top three of countries with biggest and smallest population are:
+Furthermore, during 2007 the top three of countries with biggest population is:
 
 ``` r
 data_2007 <- gapminder %>%
@@ -1295,23 +1301,7 @@ data_2007 <- gapminder %>%
 max_2007 <- data_2007 %>% 
             filter(pop >= sort(pop,decreasing=TRUE)[3])
 
-min_2007 <- data_2007 %>% 
-            filter(pop <= sort(pop,decreasing=FALSE)[3])
-```
-
-``` r
-print(min_2007)
-```
-
-    ## # A tibble: 3 x 3
-    ##   country                  pop  year
-    ##   <fct>                  <int> <int>
-    ## 1 Djibouti              496374  2007
-    ## 2 Iceland               301931  2007
-    ## 3 Sao Tome and Principe 199579  2007
-
-``` r
-print(max_2007)
+max_2007
 ```
 
     ## # A tibble: 3 x 3
@@ -1321,14 +1311,29 @@ print(max_2007)
     ## 2 India         1110396331  2007
     ## 3 United States  301139947  2007
 
+During 2007 the top three of countries with samllest population is:
+
+``` r
+min_2007 <- data_2007 %>% 
+            filter(pop <= sort(pop,decreasing=FALSE)[3])
+min_2007
+```
+
+    ## # A tibble: 3 x 3
+    ##   country                  pop  year
+    ##   <fct>                  <int> <int>
+    ## 1 Djibouti              496374  2007
+    ## 2 Iceland               301931  2007
+    ## 3 Sao Tome and Principe 199579  2007
+
 We can appreciate that population distributions of the countries with the biggest population are different:
 
 ``` r
 gapminder %>% 
-filter(country=="China" | country=="India" | country=="United States") %>% 
-ggplot(aes(country,pop)) +
-geom_violin() +
-geom_jitter(alpha=0.25)
+  filter(country=="China" | country=="India" | country=="United States") %>% 
+    ggplot(aes(country,pop)) +
+           geom_violin(fill="#4C2C69",col="#42253B",alpha=0.5) +
+           geom_jitter(col="#E3C854")
 ```
 
 ![](hw02-CeciliaLe07_files/figure-markdown_github/unnamed-chunk-15-1.png)
@@ -1337,26 +1342,64 @@ We can appreciate that population distributions of the countries with the smalle
 
 ``` r
 gapminder %>% 
-filter(country=="Djibouti" | country=="Iceland" | country=="Sao Tome and Principe") %>% 
-ggplot(aes(country,pop)) +
-geom_violin() +
-geom_jitter(alpha=0.25)
+  filter(country=="Djibouti" | country=="Iceland" | country=="Sao Tome and Principe") %>% 
+    ggplot(aes(country,pop)) +
+    geom_violin(fill="#FF0054",col="#9E0059",alpha=0.35) +
+    geom_jitter(col="#1B998B")
 ```
 
 ![](hw02-CeciliaLe07_files/figure-markdown_github/unnamed-chunk-16-1.png)
 
-Life expectancy and gdpPerCapita
-================================
+### Life expectancy and gdpPerCapita
 
 In order to observe the relation described by the life expectancy and gdp Per Capita, the next plot can be drawn
 
 ``` r
 gapminder %>% 
-  filter(year==2007) %>% 
+  filter(year==2007|year==2002|year==1997) %>% 
   ggplot(aes(gdpPercap,lifeExp,color=continent)) +
-       geom_point()
+       geom_point(alpha=0.5)+
+       facet_grid(~year) 
 ```
 
 ![](hw02-CeciliaLe07_files/figure-markdown_github/unnamed-chunk-17-1.png)
 
 We can observe as the gdp Per Capita increases, the life expectancy increases too, not in a linear way, so we can just say that these variables have a **positive** relation. The color of points indicates the most of low gdp Per Capita and low life expectacy countries, correspond to Africa continent.
+
+Now, we can see the mean of life expectancy for the last yaer by continent:
+
+``` r
+gapminder %>% 
+  select(lifeExp,year,continent) %>% 
+  filter(year==2007) %>% 
+  group_by(continent) %>%
+  summarize(Mean = mean(lifeExp))
+```
+
+    ## # A tibble: 5 x 2
+    ##   continent  Mean
+    ##   <fct>     <dbl>
+    ## 1 Africa     54.8
+    ## 2 Americas   73.6
+    ## 3 Asia       70.7
+    ## 4 Europe     77.6
+    ## 5 Oceania    80.7
+
+Therefore, we can expect to see the same ranking about gdp Per Capita
+
+``` r
+gapminder %>% 
+  select(gdpPercap,year,continent) %>% 
+  filter(year==2007) %>% 
+  group_by(continent) %>%
+  summarize(Mean = mean(gdpPercap))
+```
+
+    ## # A tibble: 5 x 2
+    ##   continent   Mean
+    ##   <fct>      <dbl>
+    ## 1 Africa     3089.
+    ## 2 Americas  11003.
+    ## 3 Asia      12473.
+    ## 4 Europe    25054.
+    ## 5 Oceania   29810.

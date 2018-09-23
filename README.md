@@ -1,4 +1,4 @@
-#This is the repository of the **second assigment** at [STAT545](http://stat545.com/)
+This is the repository of the **second assigment** at [STAT545](http://stat545.com/)
 
 In this repository you will find:
 

@@ -2,7 +2,7 @@
 
 In this repository you will find:
 
-+ *The fist exploratory analysis of `gapminder` data frame using **ggplot** and **dplyr** *
++ The fist exploratory analysis of `gapminder` data frame using **ggplot** and **dplyr**
 
 This repository is comprised by the followin files:
 

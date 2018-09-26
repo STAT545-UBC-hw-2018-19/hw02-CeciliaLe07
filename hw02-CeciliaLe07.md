@@ -3,7 +3,7 @@ Explore Gapminder and use dplyr
 
 <!-- Loading the packages we will need -->
 Smell test the data
-===================
+-------------------
 
 We can use the command `str()` to answer the following questions:
 
@@ -88,7 +88,7 @@ Type of each variable is expresed on the following table:
 | dgpPercap | Numeric |
 
 Explore individual variables
-============================
+----------------------------
 
 Pick at least one categorical variable and at least one quantitative variable to explore.
 

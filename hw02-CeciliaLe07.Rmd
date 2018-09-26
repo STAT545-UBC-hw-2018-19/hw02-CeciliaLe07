@@ -4,13 +4,14 @@ output: github_document
 always_allow_html: yes
 ---
 
+<!-- Loading the packages we will need --> 
 ```{r,echo=FALSE,include=FALSE}
 library(gapminder)
 library(tidyverse)
 library(ggplot2)
 ```
 
-#1. Smell test the data
+# 1. Smell test the data
 
 We can use the command `str()` to answer the following questions:
 
@@ -38,14 +39,17 @@ str(gapminder)
 class(gapminder)
 ```    
 
-```{r}
-#This command returns the column's names, classes and row names of gapminder
+The command `attributes` returns the column's names, classes and row names of gapminder
 
+```{r}
 #These are the name of columns
 attributes(gapminder)$names
 
 #These are the classes
 attributes(gapminder)$class
+
+#These firts six row names of gapminder
+head(attributes(gapminder)$row.names)
 ```
 
 ```{r}
@@ -59,7 +63,8 @@ ncol(gapminder)
 ```
 
 + What data type is each variable?
-    - Type of each variable is expresed on the following table:
+
+Type of each variable is expresed on the following table:
     
 |  Variable  |    Type    |
 |------------|------------|
@@ -81,20 +86,22 @@ Pick at least one categorical variable and at least one quantitative variable to
 
 ###Continent
 
-Let's explore the variable *continent* which is a categorical variable, so in order to know its levels and corresponding couts we can produce a barplot:
+Let's explore the variable *continent* which is a categorical variable, so in order to know its levels and corresponding counts we can produce a barplot:
 
 ```{r, echo=FALSE}
 ggplot(gapminder, aes(x=continent)) +
        geom_bar(color="white", fill="#0E79B2",alpha=0.7) +
        geom_text(stat='count', aes(label=..count..), vjust=1.25, col="white", size=3) +
-       ggtitle("Count of observations per continent")
+       ggtitle("Count of observations per continent") +
+       xlab("Cotinent") +
+       ylab("Observations")
 ```
 
 This graph allows us to know this variable has 5 leves: Africa, Americas, Asia, Europe and Oceania. Africa is the category with the maximum number of observations, which is equal to 624; Oceania is the continent with the minimum number of observations, which is equal to 24.
 
 ###Country
 
-Regarding the *country* variable, we can visualize the number of observations of each country by the following table:
+Regarding the **country** variable, we can visualize the number of observations of each country by the following table:
 
 ```{r,echo=FALSE,include=FALSE}
 library(knitr)
@@ -102,12 +109,14 @@ library(kableExtra)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
 ```{r,echo=FALSE}
 
-dt <- table(gapminder$country)
+#We only will to display the counts of 20 countries to avoid displaying a very large table
+dt <- table(gapminder$country)[1:20]
 
-kable(dt,col.names=c("Country","Observations")) %>%
-  kable_styling(bootstrap_options = c("striped","hover"), full_width = FALSE, position = "left",font_size =9)
+kable(dt,col.names=c("Country","Observations"),booktabs = TRUE, longtable = TRUE) %>%
+  kable_styling(bootstrap_options = c("striped"), full_width = TRUE, position = "left")
 ```
 
 The data set contains data of **142** different countries from **year 1952 to 2007**, with data of every 5 years.
@@ -118,43 +127,41 @@ The data set contains data of **142** different countries from **year 1952 to 20
 summary(gapminder$pop)
 ```
 
-During period from 1952 to 2007 the population's range for these countries was $[60011,1318683096]$.
+During period from 1952 to 2007 the population's range for these countries was from 60,011, to 1,318,683,096.
 
 
 ```{r}
 ggplot(gapminder,aes(x=as.factor(year),y=pop)) +
        geom_boxplot(outlier.colour="purple",outlier.shape=1,outlier.size=1) + 
-       ggtitle("Population's distribution by year")
+       ggtitle("Population's distribution by year") +
+       xlab("Year") +
+       ylab("Population")
 ```
 
-The side-by-side plot of population by year shows that population tends to increase every year and also we can distinghis the same quantity of outliers across the years, and particularly three outliers. The average and the spread of population by year is summarized in the following table:
+The side-by-side boxplot of population by year shows that population tends to increase every year and also we can distinghis the same quantity of outliers across the years, and particularly three outliers. The average and the spread of population by year is summarized in the following table:
 
-```{r,echo=FALSE,include=FALSE}
-tapply(gapminder$pop,as.factor(gapminder$year),mean)
-tapply(gapminder$pop,as.factor(gapminder$year),sd)
+```{r,echo=FALSE}
+table_year <- gapminder$year
+table_mean <- tapply(gapminder$pop,as.factor(table_year),mean)
+table_sd <- tapply(gapminder$pop,as.factor(table_year),sd)
+df <- data.frame(levels(as.factor(table_year)),unname(table_mean),unname(table_sd))
+colnames(df)<-c("Year","Population's mean","Population's sd")
+
+df %>% kable()
+
 ```
 
-|   Year   | Population's mean | Population's standar deviation |
-|----------|-------------------|--------------------------------|
-|   1952   |      16950402     |             58100863           |
-|   1957   |      18763413     |             65504285           |
-|   1962   |      20421007     |             69788650           |
-|   1967   |      22658298     |             78375481           |
-|   1972   |      25189980     |             88646817           |
-|   1977   |      27676379     |             97481091           |
-|   1982   |      30207302     |             105098650          |
-|   1987   |      33038573     |             114756180          |
-|   1992   |      35990917     |             124502589          |
-|   1997   |      38839468     |             133417391          |
-|   2002   |      41457589     |             140848283          |
-|   2007   |      44021220     |             147621398          |
 
 Furthermore, during 2007 the top three of countries with biggest population is: 
 
-```{r}
+```{r,echo=FALSE,include=FALSE}
 data_2007 <- gapminder %>%
              select(country, pop, year) %>% 
              filter(year==2007) 
+```
+
+
+```{r}
 
 max_2007 <- data_2007 %>% 
             filter(pop >= sort(pop,decreasing=TRUE)[3])
@@ -181,15 +188,15 @@ gapminder %>%
            geom_jitter(col="#E3C854")
 ```
 
-We can appreciate that population distributions of the countries with the smallest population are different:
+We can appreciate that population distributions of the countries with the smallest population are different too:
 
 ```{r}
 
 gapminder %>% 
   filter(country=="Djibouti" | country=="Iceland" | country=="Sao Tome and Principe") %>% 
     ggplot(aes(country,pop)) +
-    geom_violin(fill="#FF0054",col="#9E0059",alpha=0.35) +
-    geom_jitter(col="#1B998B")
+    geom_violin(fill="#00A6FB",col="#003554",alpha=0.35) +
+    geom_jitter(col="#003554")
 
 ```
 
@@ -200,21 +207,24 @@ In order to observe the relation described by the life expectancy and gdp Per Ca
 ```{r}
 gapminder %>% 
   filter(year==2007|year==2002|year==1997) %>% 
-  ggplot(aes(gdpPercap,lifeExp,color=continent)) +
+  ggplot(aes(lifeExp,gdpPercap,color=continent)) +
        geom_point(alpha=0.5)+
-       facet_grid(~year) 
+       facet_grid( ~ year) +
+       xlab("Life Expectancy") +
+       ylab("GDP Per Capita")
 ```
 
-We can observe as the gdp Per Capita increases, the life expectancy increases too, not in a linear way, so we can just say that these variables have a **positive** relation. The color of points indicates the most of low gdp Per Capita and low life expectacy countries, correspond to Africa continent.
+We can observe as the life expectancy increases, the GDP Per Capita increases too, not in a linear way, so we can just say that these variables have a **positive** relation. The color of points indicates the most of low GDP Per Capita and low life expectacy countries, correspond to Africa.
 
-Now, we can see the mean of life expectancy for the last yaer by continent:
+Now, we can see the mean of life expectancy for the last year (2007) by continent:
 
 ```{r}
 gapminder %>% 
   select(lifeExp,year,continent) %>% 
   filter(year==2007) %>% 
   group_by(continent) %>%
-  summarize(Mean = mean(lifeExp))
+  summarize(Mean = mean(lifeExp)) %>% 
+  kable()
 ```
 
 Therefore, we can expect to see the same ranking about gdp Per Capita
@@ -224,5 +234,6 @@ gapminder %>%
   select(gdpPercap,year,continent) %>% 
   filter(year==2007) %>% 
   group_by(continent) %>%
-  summarize(Mean = mean(gdpPercap))
+  summarize(Mean = mean(gdpPercap)) %>% 
+  kable()
 ```

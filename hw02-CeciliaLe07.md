@@ -1,6 +1,7 @@
 Explore Gapminder and use dplyr
 ================
 
+<!-- Loading the packages we will need -->
 1. Smell test the data
 ======================
 
@@ -36,9 +37,9 @@ class(gapminder)
 
     ## [1] "tbl_df"     "tbl"        "data.frame"
 
-``` r
-#This command returns the column's names, classes and row names of gapminder
+The command `attributes` returns the column's names, classes and row names of gapminder
 
+``` r
 #These are the name of columns
 attributes(gapminder)$names
 ```
@@ -51,6 +52,13 @@ attributes(gapminder)$class
 ```
 
     ## [1] "tbl_df"     "tbl"        "data.frame"
+
+``` r
+#These firts six row names of gapminder
+head(attributes(gapminder)$row.names)
+```
+
+    ## [1] 1 2 3 4 5 6
 
 ``` r
 #This command returns the number of rows of the data frame
@@ -67,7 +75,8 @@ ncol(gapminder)
     ## [1] 6
 
 -   What data type is each variable?
-    -   Type of each variable is expresed on the following table:
+
+Type of each variable is expresed on the following table:
 
 | Variable  | Type    |
 |-----------|---------|
@@ -89,7 +98,7 @@ Pick at least one categorical variable and at least one quantitative variable to
 
 ### Continent
 
-Let's explore the variable *continent* which is a categorical variable, so in order to know its levels and corresponding couts we can produce a barplot:
+Let's explore the variable *continent* which is a categorical variable, so in order to know its levels and corresponding counts we can produce a barplot:
 
 ![](hw02-CeciliaLe07_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
@@ -97,9 +106,9 @@ This graph allows us to know this variable has 5 leves: Africa, Americas, Asia, 
 
 ### Country
 
-Regarding the *country* variable, we can visualize the number of observations of each country by the following table:
+Regarding the **country** variable, we can visualize the number of observations of each country by the following table:
 
-<table class="table table-striped table-hover" style="font-size: 9px; width: auto !important; ">
+<table class="table table-striped" style>
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -271,982 +280,6 @@ Cameroon
 12
 </td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Canada
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Central African Republic
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Chad
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Chile
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-China
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Colombia
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Comoros
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Congo, Dem. Rep.
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Congo, Rep.
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Costa Rica
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Cote d'Ivoire
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Croatia
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Cuba
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Czech Republic
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Denmark
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Djibouti
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Dominican Republic
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Ecuador
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Egypt
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-El Salvador
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Equatorial Guinea
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Eritrea
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Ethiopia
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Finland
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-France
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Gabon
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Gambia
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Germany
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Ghana
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Greece
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Guatemala
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Guinea
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Guinea-Bissau
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Haiti
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Honduras
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Hong Kong, China
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Hungary
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Iceland
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-India
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Indonesia
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Iran
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Iraq
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Ireland
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Israel
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Italy
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Jamaica
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Japan
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Jordan
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Kenya
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Korea, Dem. Rep.
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Korea, Rep.
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Kuwait
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Lebanon
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Lesotho
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Liberia
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Libya
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Madagascar
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Malawi
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Malaysia
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Mali
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Mauritania
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Mauritius
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Mexico
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Mongolia
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Montenegro
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Morocco
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Mozambique
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Myanmar
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Namibia
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Nepal
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Netherlands
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-New Zealand
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Nicaragua
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Niger
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Nigeria
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Norway
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Oman
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Pakistan
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Panama
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Paraguay
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Peru
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Philippines
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Poland
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Portugal
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Puerto Rico
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Reunion
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Romania
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Rwanda
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Sao Tome and Principe
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Saudi Arabia
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senegal
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Serbia
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Sierra Leone
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Singapore
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Slovak Republic
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Slovenia
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Somalia
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-South Africa
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Spain
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Sri Lanka
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Sudan
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Swaziland
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Sweden
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Switzerland
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Syria
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Taiwan
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Tanzania
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Thailand
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Togo
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Trinidad and Tobago
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Tunisia
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Turkey
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Uganda
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-United Kingdom
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-United States
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Uruguay
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Venezuela
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Vietnam
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-West Bank and Gaza
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Yemen, Rep.
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Zambia
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Zimbabwe
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
 </tbody>
 </table>
 The data set contains data of **142** different countries from **year 1952 to 2007**, with data of every 5 years.
@@ -1260,42 +293,170 @@ summary(gapminder$pop)
     ##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
     ## 6.001e+04 2.794e+06 7.024e+06 2.960e+07 1.959e+07 1.319e+09
 
-During period from 1952 to 2007 the population's range for these countries was \[60011, 1318683096\].
+During period from 1952 to 2007 the population's range for these countries was from 60,011, to 1,318,683,096.
 
 ``` r
 ggplot(gapminder,aes(x=as.factor(year),y=pop)) +
        geom_boxplot(outlier.colour="purple",outlier.shape=1,outlier.size=1) + 
-       ggtitle("Population's distribution by year")
+       ggtitle("Population's distribution by year") +
+       xlab("Year") +
+       ylab("Population")
 ```
 
 ![](hw02-CeciliaLe07_files/figure-markdown_github/unnamed-chunk-11-1.png)
 
-The side-by-side plot of population by year shows that population tends to increase every year and also we can distinghis the same quantity of outliers across the years, and particularly three outliers. The average and the spread of population by year is summarized in the following table:
+The side-by-side boxplot of population by year shows that population tends to increase every year and also we can distinghis the same quantity of outliers across the years, and particularly three outliers. The average and the spread of population by year is summarized in the following table:
 
-| Year | Population's mean | Population's standar deviation |
-|------|-------------------|--------------------------------|
-| 1952 | 16950402          | 58100863                       |
-| 1957 | 18763413          | 65504285                       |
-| 1962 | 20421007          | 69788650                       |
-| 1967 | 22658298          | 78375481                       |
-| 1972 | 25189980          | 88646817                       |
-| 1977 | 27676379          | 97481091                       |
-| 1982 | 30207302          | 105098650                      |
-| 1987 | 33038573          | 114756180                      |
-| 1992 | 35990917          | 124502589                      |
-| 1997 | 38839468          | 133417391                      |
-| 2002 | 41457589          | 140848283                      |
-| 2007 | 44021220          | 147621398                      |
-
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Year
+</th>
+<th style="text-align:right;">
+Population's mean
+</th>
+<th style="text-align:right;">
+Population's sd
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1952
+</td>
+<td style="text-align:right;">
+16950402
+</td>
+<td style="text-align:right;">
+58100863
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1957
+</td>
+<td style="text-align:right;">
+18763413
+</td>
+<td style="text-align:right;">
+65504285
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1962
+</td>
+<td style="text-align:right;">
+20421007
+</td>
+<td style="text-align:right;">
+69788650
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1967
+</td>
+<td style="text-align:right;">
+22658298
+</td>
+<td style="text-align:right;">
+78375481
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1972
+</td>
+<td style="text-align:right;">
+25189980
+</td>
+<td style="text-align:right;">
+88646817
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1977
+</td>
+<td style="text-align:right;">
+27676379
+</td>
+<td style="text-align:right;">
+97481091
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1982
+</td>
+<td style="text-align:right;">
+30207302
+</td>
+<td style="text-align:right;">
+105098650
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1987
+</td>
+<td style="text-align:right;">
+33038573
+</td>
+<td style="text-align:right;">
+114756180
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1992
+</td>
+<td style="text-align:right;">
+35990917
+</td>
+<td style="text-align:right;">
+124502589
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1997
+</td>
+<td style="text-align:right;">
+38839468
+</td>
+<td style="text-align:right;">
+133417391
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2002
+</td>
+<td style="text-align:right;">
+41457589
+</td>
+<td style="text-align:right;">
+140848283
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007
+</td>
+<td style="text-align:right;">
+44021220
+</td>
+<td style="text-align:right;">
+147621398
+</td>
+</tr>
+</tbody>
+</table>
 Furthermore, during 2007 the top three of countries with biggest population is:
-
-``` r
-data_2007 <- gapminder %>%
-             select(country, pop, year) %>% 
-             filter(year==2007) 
-```
-
-    ## Warning: package 'bindrcpp' was built under R version 3.3.3
 
 ``` r
 max_2007 <- data_2007 %>% 
@@ -1336,19 +497,19 @@ gapminder %>%
            geom_jitter(col="#E3C854")
 ```
 
-![](hw02-CeciliaLe07_files/figure-markdown_github/unnamed-chunk-15-1.png)
+![](hw02-CeciliaLe07_files/figure-markdown_github/unnamed-chunk-16-1.png)
 
-We can appreciate that population distributions of the countries with the smallest population are different:
+We can appreciate that population distributions of the countries with the smallest population are different too:
 
 ``` r
 gapminder %>% 
   filter(country=="Djibouti" | country=="Iceland" | country=="Sao Tome and Principe") %>% 
     ggplot(aes(country,pop)) +
-    geom_violin(fill="#FF0054",col="#9E0059",alpha=0.35) +
-    geom_jitter(col="#1B998B")
+    geom_violin(fill="#00A6FB",col="#003554",alpha=0.35) +
+    geom_jitter(col="#003554")
 ```
 
-![](hw02-CeciliaLe07_files/figure-markdown_github/unnamed-chunk-16-1.png)
+![](hw02-CeciliaLe07_files/figure-markdown_github/unnamed-chunk-17-1.png)
 
 ### Life expectancy and gdpPerCapita
 
@@ -1357,34 +518,82 @@ In order to observe the relation described by the life expectancy and gdp Per Ca
 ``` r
 gapminder %>% 
   filter(year==2007|year==2002|year==1997) %>% 
-  ggplot(aes(gdpPercap,lifeExp,color=continent)) +
+  ggplot(aes(lifeExp,gdpPercap,color=continent)) +
        geom_point(alpha=0.5)+
-       facet_grid(~year) 
+       facet_grid( ~ year) +
+       xlab("Life Expectancy") +
+       ylab("GDP Per Capita")
 ```
 
-![](hw02-CeciliaLe07_files/figure-markdown_github/unnamed-chunk-17-1.png)
+![](hw02-CeciliaLe07_files/figure-markdown_github/unnamed-chunk-18-1.png)
 
-We can observe as the gdp Per Capita increases, the life expectancy increases too, not in a linear way, so we can just say that these variables have a **positive** relation. The color of points indicates the most of low gdp Per Capita and low life expectacy countries, correspond to Africa continent.
+We can observe as the life expectancy increases, the GDP Per Capita increases too, not in a linear way, so we can just say that these variables have a **positive** relation. The color of points indicates the most of low GDP Per Capita and low life expectacy countries, correspond to Africa.
 
-Now, we can see the mean of life expectancy for the last yaer by continent:
+Now, we can see the mean of life expectancy for the last year (2007) by continent:
 
 ``` r
 gapminder %>% 
   select(lifeExp,year,continent) %>% 
   filter(year==2007) %>% 
   group_by(continent) %>%
-  summarize(Mean = mean(lifeExp))
+  summarize(Mean = mean(lifeExp)) %>% 
+  kable()
 ```
 
-    ## # A tibble: 5 x 2
-    ##   continent  Mean
-    ##   <fct>     <dbl>
-    ## 1 Africa     54.8
-    ## 2 Americas   73.6
-    ## 3 Asia       70.7
-    ## 4 Europe     77.6
-    ## 5 Oceania    80.7
-
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+continent
+</th>
+<th style="text-align:right;">
+Mean
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Africa
+</td>
+<td style="text-align:right;">
+54.80604
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Americas
+</td>
+<td style="text-align:right;">
+73.60812
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:right;">
+70.72848
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Europe
+</td>
+<td style="text-align:right;">
+77.64860
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Oceania
+</td>
+<td style="text-align:right;">
+80.71950
+</td>
+</tr>
+</tbody>
+</table>
 Therefore, we can expect to see the same ranking about gdp Per Capita
 
 ``` r
@@ -1392,14 +601,61 @@ gapminder %>%
   select(gdpPercap,year,continent) %>% 
   filter(year==2007) %>% 
   group_by(continent) %>%
-  summarize(Mean = mean(gdpPercap))
+  summarize(Mean = mean(gdpPercap)) %>% 
+  kable()
 ```
 
-    ## # A tibble: 5 x 2
-    ##   continent   Mean
-    ##   <fct>      <dbl>
-    ## 1 Africa     3089.
-    ## 2 Americas  11003.
-    ## 3 Asia      12473.
-    ## 4 Europe    25054.
-    ## 5 Oceania   29810.
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+continent
+</th>
+<th style="text-align:right;">
+Mean
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Africa
+</td>
+<td style="text-align:right;">
+3089.033
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Americas
+</td>
+<td style="text-align:right;">
+11003.032
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:right;">
+12473.027
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Europe
+</td>
+<td style="text-align:right;">
+25054.482
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Oceania
+</td>
+<td style="text-align:right;">
+29810.188
+</td>
+</tr>
+</tbody>
+</table>

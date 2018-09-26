@@ -2,8 +2,8 @@ Explore Gapminder and use dplyr
 ================
 
 <!-- Loading the packages we will need -->
-1. Smell test the data
-======================
+Smell test the data
+===================
 
 We can use the command `str()` to answer the following questions:
 
@@ -87,8 +87,8 @@ Type of each variable is expresed on the following table:
 | pop       | Integer |
 | dgpPercap | Numeric |
 
-2. Explore individual variables
-===============================
+Explore individual variables
+============================
 
 Pick at least one categorical variable and at least one quantitative variable to explore.
 
